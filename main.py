@@ -1,4 +1,6 @@
-from print_board import print_board
+from variable_class import Variable
+from board import print_board, fill_board
+from backtracking import solve_n_queens
 
 def read_input() -> tuple[int, int]:
     done = False
@@ -16,16 +18,15 @@ def read_input() -> tuple[int, int]:
             done = False
     return size, num_queens
 
-def valid_state(board: list[list[int]]) -> bool:
-    
-
-def solve_n_queens(board: list[list[int]], num_queens: int) -> None:
-
-
 def main() -> None:
     size, num_queens = read_input()
-    board = [[0 for _ in range(size)] for _ in range(size)]
-    print_board(board)
+    variables = [Variable(-1, set(num for num in range(size))) for _ in range(size)]
+    result = solve_n_queens(variables, num_queens)
+    if result:
+        board = fill_board(result, size)
+        print_board(board)
+    else:
+        print("Problem impossible to solve")
 
 if __name__ == "__main__":
     main()
