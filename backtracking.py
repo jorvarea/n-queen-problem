@@ -17,7 +17,8 @@ def select_mrv(variables: list[Variable]) -> Optional[int]:
         min_domain_index = 0
         min_domain_len = len(variables[0].possible_values)
         for i, var in enumerate(variables):
-            if var.value == -1 and len(var.possible_values) > 0 and len(var.possible_values) <= min_domain_len:
+            if (var.value == -1 and len(var.possible_values) > 0
+                and len(var.possible_values) <= min_domain_len):
                 min_domain_index = i
                 min_domain_len = len(var.possible_values)
     else:
