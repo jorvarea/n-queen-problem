@@ -2,5 +2,5 @@ from dataclasses import dataclass
 
 @dataclass
 class Variable:
-    value: int
-    possible_values: set[int]
+    row: int
+    possible_rows: set[int]
